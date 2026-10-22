@@ -32,8 +32,7 @@
 - [x] Configurar o dev server para escutar em `0.0.0.0:3000`.
 - [x] Confirmar que o site carrega sem erros de runtime e que a página é navegável por teclado após a mudança visual.
 
-
 ## Publicação no GitHub Pages
 
-- [ ] Publicar o site Lunarium em `https://melfecap-gif.github.io/system-design/`, usando um build específico com a base `/system-design/` e uma branch de publicação independente, sem alterar o build padrão da prévia WebDev.
-- [ ] Manter o repositório-fonte privado se o plano GitHub permitir Pages a partir de fonte privada; se o GitHub exigir um repositório público, tornar `melfecap-gif/system-design` público conforme autorização explícita do usuário, sabendo que isso expõe o código-fonte e o histórico além do site.
+- [x] Publicar o site Lunarium em `https://melfecap-gif.github.io/system-design/`, usando um build específico com a base `/system-design/` e uma branch de publicação independente, sem alterar o build padrão da prévia WebDev.
+- [x] Publicar o repositório-fonte como público por escolha do usuário; o código e o histórico ficam visíveis junto com o site público do GitHub Pages.
