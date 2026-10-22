@@ -10,11 +10,11 @@ type Phase = {
 }
 
 const image = {
-  hero: '/images/moons-hero.jpg',
-  lunar: '/images/moon-lunar.jpg',
-  phases: '/images/moon-phases.jpg',
-  earth: '/images/earth-moon.jpg',
-  gallery: '/images/solar-gallery.jpg',
+  hero: `${import.meta.env.BASE_URL}images/moons-hero.jpg`,
+  lunar: `${import.meta.env.BASE_URL}images/moon-lunar.jpg`,
+  phases: `${import.meta.env.BASE_URL}images/moon-phases.jpg`,
+  earth: `${import.meta.env.BASE_URL}images/earth-moon.jpg`,
+  gallery: `${import.meta.env.BASE_URL}images/solar-gallery.jpg`,
 }
 
 const featured = [

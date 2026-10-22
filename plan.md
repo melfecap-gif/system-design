@@ -40,3 +40,10 @@ Aplicação React + TypeScript + Vite, sem backend, serviços ou credenciais. Fo
 ## Entrega
 
 Build estático com Vite. Validar o TypeScript/build, manifesto de rota, carregamento de imagens e fontes, inspeção da prévia desktop/mobile e preservação dos critérios editoriais e interativos. Registrar a alteração no checkpoint canônico, sem declarar publicação ou URL pública se não houver confirmação de publicação.
+
+
+## Publicação adicional — GitHub Pages
+
+O destino é o site público de projeto `https://melfecap-gif.github.io/system-design/`, mantido separado da publicação raiz do WebDev. Preservar `pnpm build` para Manus/WebDev e acrescentar um script específico que gera `dist` com a base Vite `/system-design/`; o código deve prefixar as imagens com `import.meta.env.BASE_URL`, e Vite deve prefixar os arquivos públicos de fonte e favicon. Publicar o conteúdo de `dist/` na raiz da branch `gh-pages` e selecionar essa branch como origem do Pages. Usar publicação por branch, não GitHub Actions.
+
+Manter o repositório privado se o plano GitHub permitir Pages a partir de repositório privado. O site publicado é público mesmo quando o repositório-fonte permanece privado. No GitHub Free a origem precisa ser um repositório público; nesse caso, a visibilidade pública do repositório `melfecap-gif/system-design` está autorizada pelo usuário. Não ativar a publicação automática do WebDev. Fontes: [elegibilidade e criação de Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site), [origens de publicação](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [visibilidade do site](https://docs.github.com/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site).
