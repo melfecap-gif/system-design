@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
@@ -18,23 +18,23 @@ const image = {
 }
 
 const featured = [
-  { system: 'Saturno', moon: 'Mimas · Encélado · Titã', blurb: 'Saturno tem mais luas do que qualquer outro planeta.', tone: 'saturn' },
-  { system: 'Urano', moon: 'Titânia · Oberon · Miranda', blurb: 'As luas de Urano recebem nomes da grande literatura.', tone: 'uranus' },
-  { system: 'Netuno', moon: 'Tritão · Nereida', blurb: 'Netuno tem 16 luas conhecidas.', tone: 'neptune' },
-  { system: 'Plutão', moon: 'Caronte · Hidra · Nix', blurb: 'Plutão tem cinco luas.', tone: 'pluto' },
-  { system: 'Terra', moon: 'A Lua', blurb: 'A Lua torna a Terra mais habitável ao moderar sua oscilação.', tone: 'earth' },
-  { system: 'Marte', moon: 'Fobos · Deimos', blurb: 'Marte tem duas pequenas luas: Fobos e Deimos.', tone: 'mars' },
-  { system: 'Júpiter', moon: 'Io · Europa · Ganimedes', blurb: 'Dezenas de luas orbitam este mundo gigante.', tone: 'jupiter' },
+  { system: 'Saturno', moon: 'Mimas · Encélado · Titã', blurb: 'Saturno tem mais luas do que qualquer outro planeta.' },
+  { system: 'Urano', moon: 'Titânia · Oberon · Miranda', blurb: 'As luas de Urano recebem nomes da grande literatura.' },
+  { system: 'Netuno', moon: 'Tritão · Nereida', blurb: 'Netuno tem 16 luas conhecidas.' },
+  { system: 'Plutão', moon: 'Caronte · Hidra · Nix', blurb: 'Plutão tem cinco luas.' },
+  { system: 'Terra', moon: 'A Lua', blurb: 'A Lua torna a Terra mais habitável ao moderar sua oscilação.' },
+  { system: 'Marte', moon: 'Fobos · Deimos', blurb: 'Marte tem duas pequenas luas: Fobos e Deimos.' },
+  { system: 'Júpiter', moon: 'Io · Europa · Ganimedes', blurb: 'Dezenas de luas orbitam este mundo gigante.' },
 ]
 
 const moonSystems = [
-  { planet: 'Terra', count: '1 Lua', moons: 'A Lua', color: '#e7e4de', description: 'A Lua torna a Terra mais habitável ao moderar sua oscilação.', url: 'https://science.nasa.gov/moon/' },
-  { planet: 'Marte', count: '2 luas', moons: 'Fobos · Deimos', color: '#d65f37', description: 'Duas companheiras pequenas e irregulares cruzam o céu marciano.', url: 'https://science.nasa.gov/mars/moons/' },
-  { planet: 'Júpiter', count: 'Dezenas', moons: 'Io · Europa · Ganimedes · Calisto', color: '#d8a171', description: 'Dezenas de luas orbitam este mundo gigante.', url: 'https://science.nasa.gov/jupiter/jupiter-moons/' },
-  { planet: 'Saturno', count: 'Mais luas', moons: 'Titã · Encélado · Mimas · Jápeto', color: '#e6d6ad', description: 'Saturno tem mais luas do que qualquer outro planeta.', url: 'https://science.nasa.gov/saturn/moons/' },
-  { planet: 'Urano', count: 'Literatura', moons: 'Ariel · Umbriel · Titânia · Miranda', color: '#9bdce5', description: 'As luas de Urano recebem nomes da grande literatura.', url: 'https://science.nasa.gov/uranus/moons/' },
-  { planet: 'Netuno', count: '16 luas', moons: 'Tritão · Nereida', color: '#547ce4', description: 'Netuno tem 16 luas conhecidas.', url: 'https://science.nasa.gov/neptune/moons/' },
-  { planet: 'Plutão', count: '5 luas', moons: 'Caronte · Nix · Hidra', color: '#c19880', description: 'Plutão tem cinco luas.', url: 'https://science.nasa.gov/dwarf-planets/pluto/moons/' },
+  { planet: 'Terra', count: '1 Lua', moons: 'A Lua', description: 'A Lua torna a Terra mais habitável ao moderar sua oscilação.', url: 'https://science.nasa.gov/moon/' },
+  { planet: 'Marte', count: '2 luas', moons: 'Fobos · Deimos', description: 'Duas companheiras pequenas e irregulares cruzam o céu marciano.', url: 'https://science.nasa.gov/mars/moons/' },
+  { planet: 'Júpiter', count: 'Dezenas', moons: 'Io · Europa · Ganimedes · Calisto', description: 'Dezenas de luas orbitam este mundo gigante.', url: 'https://science.nasa.gov/jupiter/jupiter-moons/' },
+  { planet: 'Saturno', count: 'Mais luas', moons: 'Titã · Encélado · Mimas · Jápeto', description: 'Saturno tem mais luas do que qualquer outro planeta.', url: 'https://science.nasa.gov/saturn/moons/' },
+  { planet: 'Urano', count: 'Literatura', moons: 'Ariel · Umbriel · Titânia · Miranda', description: 'As luas de Urano recebem nomes da grande literatura.', url: 'https://science.nasa.gov/uranus/moons/' },
+  { planet: 'Netuno', count: '16 luas', moons: 'Tritão · Nereida', description: 'Netuno tem 16 luas conhecidas.', url: 'https://science.nasa.gov/neptune/moons/' },
+  { planet: 'Plutão', count: '5 luas', moons: 'Caronte · Nix · Hidra', description: 'Plutão tem cinco luas.', url: 'https://science.nasa.gov/dwarf-planets/pluto/moons/' },
 ]
 
 const phases: Phase[] = [
@@ -66,10 +66,6 @@ function OrbitMark() {
   )
 }
 
-function MoonDot({ tone }: { tone: string }) {
-  return <span className={`moon-dot ${tone}`} aria-hidden="true"><i /></span>
-}
-
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [phaseIndex, setPhaseIndex] = useState(2)
@@ -84,7 +80,8 @@ function App() {
   }, [])
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    document.getElementById(id)?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' })
     setMenuOpen(false)
   }
 
@@ -109,9 +106,6 @@ function App() {
 
       <main>
         <section className="hero" id="inicio">
-          <div className="hero-grid" aria-hidden="true" />
-          <div className="hero-orbit hero-orbit--one" aria-hidden="true" />
-          <div className="hero-orbit hero-orbit--two" aria-hidden="true" />
           <div className="hero-copy">
             <p className="eyebrow"><span>01</span> UM GUIA DE CAMPO PARA O CÉU PRÓXIMO</p>
             <h1>As luas<br /><em>contam</em><br />histórias.</h1>
@@ -121,11 +115,8 @@ function App() {
               <p>ROLAR PARA DESCOBRIR<br /><span>↓</span></p>
             </div>
           </div>
-          <div className="hero-art" aria-label="Montagem de luas do Sistema Solar">
+          <div className="hero-art">
             <div className="hero-image-wrap"><img src={image.hero} alt="Montagem de luas orbitando um planeta" /></div>
-            <div className="orbit-label orbit-label--top">NATURAL<br />SATELLITES</div>
-            <div className="orbit-label orbit-label--bottom">∞  HÁ MAIS PARA ENCONTRAR</div>
-            <div className="hero-counter"><strong>01</strong><span>/ 07</span></div>
           </div>
           <a className="hero-credit" href="https://science.nasa.gov/solar-system/moons/" target="_blank" rel="noreferrer">Imagem pública NASA <Arrow /></a>
         </section>
@@ -136,7 +127,6 @@ function App() {
             {featured.map((item, index) => (
               <article className="feature-card" key={item.system}>
                 <div className="feature-number">0{index + 1}</div>
-                <MoonDot tone={item.tone} />
                 <div className="feature-content">
                   <p>{item.system}</p>
                   <h2>{item.moon}</h2>
@@ -163,7 +153,7 @@ function App() {
         </section>
 
         <section className="other-moons">
-          <div className="other-image"><img src={image.lunar} alt="Lua vista em detalhes contra o fundo escuro" /><span className="image-stamp">CORPO<br />SÓLIDO</span></div>
+          <div className="other-image"><img src={image.lunar} alt="Lua vista em detalhes contra o fundo escuro" /><span className="media-credit">Imagem: NASA</span></div>
           <div className="other-copy">
             <p className="eyebrow"><span>04</span> OUTRAS LUAS</p>
             <h2>Além dos<br /><em>planetas.</em></h2>
@@ -181,19 +171,27 @@ function App() {
             <p>De iluminar nossos céus a guardar um registro geológico da história do Sistema Solar, nossa vizinha celeste mais próxima desempenha um papel essencial no estudo da Terra e do espaço ao redor.</p>
             <a className="round-button round-button--light" href="https://science.nasa.gov/moon/" target="_blank" rel="noreferrer">Tudo sobre a Lua <Arrow diagonal /></a>
           </div>
-          <div className="earth-orbit" aria-hidden="true"><div className="earth-image"><img src={image.earth} alt="" /></div><div className="orbit-ring" /><span>384.400 KM<br />EM MÉDIA</span></div>
+          <div className="earth-orbit"><div className="earth-image"><img src={image.earth} alt="A Terra e a Lua vistas do espaço" /></div><small className="media-credit">Imagem: NASA</small><span>384.400 KM<br />EM MÉDIA</span></div>
         </section>
 
         <section className="phases-section" id="fases">
           <div className="phases-heading"><p className="eyebrow"><span>06</span> É SÓ UMA FASE</p><h2>A Lua muda — <em>o olhar também.</em></h2></div>
           <div className="phase-experience">
-            <div className="phase-glow" aria-hidden="true" />
             <div className={`phase-moon phase-moon--${phase.className}`} aria-label={`Fase lunar selecionada: ${phase.name}`}>
               <img src={image.phases} alt="Fases da Lua em uma sequência fotográfica" />
               <div className="phase-mask" />
+              <span className="media-credit">Imagem: NASA</span>
             </div>
             <div className="phase-controls" role="tablist" aria-label="Fases da Lua">
-              {phases.map((item, index) => <button key={item.name} id={`phase-tab-${index}`} role="tab" aria-controls="phase-description" aria-selected={phaseIndex === index} className={phaseIndex === index ? 'active' : ''} onClick={() => setPhaseIndex(index)} onKeyDown={(event) => { if (event.key === 'ArrowRight') setPhaseIndex((index + 1) % phases.length); if (event.key === 'ArrowLeft') setPhaseIndex((index - 1 + phases.length) % phases.length) }}><span>{item.label}</span>{item.name}</button>)}
+              {phases.map((item, index) => <button key={item.name} id={`phase-tab-${index}`} role="tab" tabIndex={phaseIndex === index ? 0 : -1} aria-controls="phase-description" aria-selected={phaseIndex === index} className={phaseIndex === index ? 'active' : ''} onClick={() => setPhaseIndex(index)} onKeyDown={(event) => {
+                const step = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 0
+                if (step) {
+                  event.preventDefault()
+                  const nextIndex = (index + step + phases.length) % phases.length
+                  setPhaseIndex(nextIndex)
+                  document.getElementById(`phase-tab-${nextIndex}`)?.focus()
+                }
+              }}><span>{item.label}</span>{item.name}</button>)}
             </div>
             <div className="phase-copy" id="phase-description" role="tabpanel" aria-labelledby={`phase-tab-${phaseIndex}`} aria-live="polite"><span>FASE {phase.label}</span><h3>{phase.name}</h3><p>{phase.text}</p><a className="text-link" href="https://science.nasa.gov/moon/moon-phases/" target="_blank" rel="noreferrer">Aprenda as fases da Lua <Arrow /></a></div>
           </div>
@@ -204,16 +202,15 @@ function App() {
           <div className="systems-heading"><p className="eyebrow"><span>07</span> CARTOGRAFIA ORBITAL</p><h2>Luas no nosso<br /><em>Sistema Solar</em></h2><p>Sete sistemas, centenas de trajetórias e uma coleção inesgotável de mundos para observar.</p></div>
           <div className="system-list">
             {moonSystems.map((system, index) => (
-              <article className="system-row" key={system.planet} style={{ '--system-color': system.color } as CSSProperties}>
+              <article className="system-row" key={system.planet}>
                 <span className="row-index">0{index + 1}</span>
-                <span className="system-orb"><i /></span>
                 <div><h3>{system.planet}</h3><p>{system.moons}</p></div>
                 <div className="row-info"><strong>{system.count}</strong><span>{system.description}</span></div>
                 <a href={system.url} aria-label={`Saiba mais sobre as luas de ${system.planet}`} target="_blank" rel="noreferrer"><Arrow /></a>
               </article>
             ))}
           </div>
-          <div className="gallery-banner"><img src={image.gallery} alt="Coleção de corpos celestes do Sistema Solar" /><div><span>GALERIA NASA</span><h3>11 imagens<br />para ampliar<br />sua órbita.</h3><a href="https://science.nasa.gov/gallery/moons/" target="_blank" rel="noreferrer">Ir para a galeria <Arrow /></a></div></div>
+          <div className="gallery-banner"><img src={image.gallery} alt="Coleção de corpos celestes do Sistema Solar" /><div><span>GALERIA NASA</span><h3>11 imagens<br />para ampliar<br />sua órbita.</h3><small>Imagens públicas: NASA</small><a href="https://science.nasa.gov/gallery/moons/" target="_blank" rel="noreferrer">Ir para a galeria <Arrow /></a></div></div>
         </section>
 
         <section className="news-section" id="noticias">
